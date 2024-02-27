@@ -3,8 +3,9 @@
 #include <fstream>
 #include "db/db.h"
 #include "menus/main_menu.h"
+#include "menu_constants.h"
 
-bool create_schema(Db& db, std::string filename = "db.schema"){
+void create_schema(Db& db, std::string filename = "db/db.schema"){
     std::ifstream file(filename);
     std::string line;
     std::string query = "";
@@ -22,19 +23,19 @@ bool create_schema(Db& db, std::string filename = "db.schema"){
     db.execute_query(q);
 }
 
-MainMenu menu = MainMenu();
-void run(){
+void run(MainMenu& m){
     while(true){
-        menu.run();
+        m.run();
         /*call initial menu here. Which will call other menus based on body entered. USSD style*/
     }
 }
 
 int main(){
     //create schema
+    menu_bodies menus;
     Db db = Db();
-
+    MainMenu m = MainMenu(menus.MAIN_MENU, "");
     create_schema(db);
-    run();
+    run(m);
     return 0;
 }

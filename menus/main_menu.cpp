@@ -2,11 +2,10 @@
 #include "../menu_constants.h"
 
 MainMenu::MainMenu(std::string menu, std::string input_body) : BaseMenu(menu, input_body){}
-MainMenu::MainMenu() : BaseMenu(Menu.MAIN_MENU, ""){}
+MainMenu::MainMenu() : BaseMenu(){}
 
 std::string MainMenu::run(){
     std::cout << this->menu << std::endl;
-    std::cout << "here" << std::endl;
     std::string response;
 
     std::cin >> response;

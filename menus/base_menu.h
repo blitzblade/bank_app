@@ -12,7 +12,7 @@ class BaseMenu {
     public:
     BaseMenu(std::string menu, std::string input_body);
     BaseMenu();
-    std::string run();
+    void run();
 };
 
 #endif
