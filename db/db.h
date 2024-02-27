@@ -14,6 +14,7 @@ class Db
         char* db_name;
 
     public:
+        Db();
         Db(char* db_name);
         bool open_db();
         bool execute_query(char* query);

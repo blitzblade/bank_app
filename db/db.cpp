@@ -7,6 +7,10 @@ Db::Db(char* db_name){
     
 }
 
+Db::Db(){
+    this->db_name = "bank.db";
+}
+
 bool Db::open_db(){
     int rc = sqlite3_open(db_name, &db);
     if( rc ) {

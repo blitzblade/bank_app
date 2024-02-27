@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS users(ID INT PRIMARY KEY NOT NULL, first_name TEXT, last_name TEXT NOT NULL, username TEXT, password TEXT);
+CREATE TABLE IF NOT EXISTS bank_accounts(ID INT PRIMARY KEY NOT NULL, account_name TEXT, account_number TEXT NOT NULL, user_id INT);
+CREATE TABLE IF NOT EXISTS transactions(ID INT PRIMARY KEY NOT NULL, description TEXT, transaction_type TEXT, from_account_id INT, to_account_id INT, amount DECIMAL);
