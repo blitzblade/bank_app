@@ -1,7 +1,11 @@
+#ifndef BASE_MENU_H
+#define BASE_MENU_H
+
 #include <iostream>
 #include <string>
 
 class BaseMenu {
+    protected:
     std::string menu;
     std::string input_body;
 
@@ -10,3 +14,5 @@ class BaseMenu {
     BaseMenu();
     std::string run();
 };
+
+#endif

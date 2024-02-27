@@ -2,6 +2,7 @@
 #include <sqlite3.h>
 #include <fstream>
 #include "db/db.h"
+#include "menus/main_menu.h"
 
 bool create_schema(Db& db, std::string filename = "db.schema"){
     std::ifstream file(filename);
@@ -21,8 +22,10 @@ bool create_schema(Db& db, std::string filename = "db.schema"){
     db.execute_query(q);
 }
 
+MainMenu menu = MainMenu();
 void run(){
     while(true){
+        menu.run();
         /*call initial menu here. Which will call other menus based on body entered. USSD style*/
     }
 }
