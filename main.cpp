@@ -17,9 +17,14 @@ bool create_schema(Db& db, std::string filename = "db.schema"){
     } else {
         std::cout << "Unable to open file" << std::endl;
     }
-
     char* q = query.data();
     db.execute_query(q);
+}
+
+void run(){
+    while(true){
+        /*call initial menu here. Which will call other menus based on body entered. USSD style*/
+    }
 }
 
 int main(){
@@ -27,5 +32,6 @@ int main(){
     Db db = Db();
 
     create_schema(db);
+    run();
     return 0;
 }
