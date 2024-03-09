@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "../db/cache.h"
 
 class BaseMenu {
     protected:

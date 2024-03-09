@@ -1,7 +1,7 @@
 #include "login.h"
 #include "../menu_constants.h"
 
-LoginMenu::LoginMenu(std::string menu, std::string inputBody, std::string sessionId) : BaseMenu(menu, inputBody, sessionId){}
+LoginMenu::LoginMenu(Cache cache, std::string previous_menu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previous_menu, inputBody, sessionId){}
 LoginMenu::LoginMenu() : BaseMenu(){}
 
 std::string LoginMenu::run(){
