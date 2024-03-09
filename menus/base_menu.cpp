@@ -1,20 +1,33 @@
 #include "base_menu.h"
+#include "../db/cache.h"
 
-BaseMenu::BaseMenu(std::string menu, std::string input_body){
+BaseMenu::BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId){
+    this->cache = cache;
+    this->previousMenu = previousMenu;
+    this->inputBody = inputBody;
+    this->sessionId = sessionId;
+}
+
+BaseMenu::BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu){
+    this->previousMenu = previousMenu;
+    this->cache = cache;
+    this->inputBody = inputBody;
+    this->sessionId = sessionId;
     this->menu = menu;
-    this->input_body = input_body;
 }
 
 BaseMenu::BaseMenu(){
-    BaseMenu("","");
+    
+    BaseMenu(Cache(),"","","");
 }
 
-void BaseMenu::run(){
+bool BaseMenu::run(){
     std::cout << this->menu << std::endl;
     
-    if(this->input_body == "1"){
+    if(this->inputBody == "1"){
         /*call some function*/
-    }else if(this->input_body == "2"){
+    }else if(this->inputBody == "2"){
         /*call some other function*/
     }
+    return false; //don't run
 }

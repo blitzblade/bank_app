@@ -7,12 +7,16 @@
 class BaseMenu {
     protected:
     std::string menu;
-    std::string input_body;
+    Cache cache;
+    std::string inputBody;
+    std::string previousMenu;
+    std::string sessionId;
 
     public:
-    BaseMenu(std::string menu, std::string input_body);
+    BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId);
+    BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu);
     BaseMenu();
-    void run();
+    bool run();
 };
 
 #endif

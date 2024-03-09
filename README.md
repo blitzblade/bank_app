@@ -7,3 +7,11 @@
  - Send Money
 
  - Check Mini Statement
+
+
+# NB
+- had to install sqlite3
+`brew install sqlite3`
+- had to instally cryptopp
+`brew install cryptopp`
+

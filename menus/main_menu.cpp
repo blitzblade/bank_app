@@ -1,11 +1,12 @@
 #include "main_menu.h"
-#include "../menu_constants.h"
 
-MainMenu::MainMenu(std::string menu, std::string input_body) : BaseMenu(menu, input_body){}
+MainMenu::MainMenu(Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previousMenu, inputBody, sessionId){}
+MainMenu::MainMenu(Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu) : BaseMenu(cache, previousMenu, inputBody, sessionId, menu){}
 MainMenu::MainMenu() : BaseMenu(){}
 
-std::string MainMenu::run(){
+bool MainMenu::run(){
     std::cout << this->menu << std::endl;
+    std::string sessionId = util::generateRandomString(8);
     std::string response;
 
     std::cin >> response;
@@ -15,7 +16,19 @@ std::string MainMenu::run(){
         std::cout << "Yet to be implemented" << std::endl;
     }else if(response == "2"){
         /*call signup class*/
-        std::cout << "Yet to be implemented" << std::endl;
+        
+        this->signup = SignupMenu(cache, "","",sessionId);
+
+        std::vector<std::string> steps = { this->signup.ENTER_NAME, this->signup.ENTER_USERNAME, this->signup.ENTER_PASSWORD, this->signup.CONFIRM_PASSWORD };
+
+        for (std::string step : steps)
+        {
+            std::cout << step << std::endl;
+            getline(std::cin, response);
+            this->signup.setPreviousMenu(step);
+            this->signup.setInputBody(response);
+        }
+
     }else if(response == "3"){
         /*call about class*/
         std::cout << "Yet to be implemented" << std::endl;

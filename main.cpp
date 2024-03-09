@@ -33,8 +33,9 @@ void run(MainMenu& m){
 int main(){
     //create schema
     menu_bodies menus;
+    Cache cache = Cache();
     Db db = Db();
-    MainMenu m = MainMenu(menus.MAIN_MENU, "");
+    MainMenu m = MainMenu(cache, "", "", "", menus.MAIN_MENU);
     create_schema(db);
     run(m);
     return 0;
