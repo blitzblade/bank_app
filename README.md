@@ -9,10 +9,10 @@
  - Check Mini Statement
 
 # Build app
-mkdir build
-cd build
-cmake ..
-make
+- mkdir build
+- cd build
+- cmake ..
+- make
 
 # run executable
 ./bank_app/bank_app
