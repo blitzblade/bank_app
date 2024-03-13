@@ -1,4 +1,4 @@
-#include "db.h"
+#include "../include/db/db.h"
 
 
 Db::Db(char* db_name){
@@ -22,7 +22,7 @@ bool Db::open_db(){
     }
 }
 
-bool Db::execute_query(char* query){
+bool Db::execute_query(const char* query){
     open_db();
     // Execute SQL statement
     int rc = sqlite3_exec(db, query, NULL, 0, &zErrMsg);

@@ -17,7 +17,7 @@ class Db
         Db();
         Db(char* db_name);
         bool open_db();
-        bool execute_query(char* query);
+        bool execute_query(const char* query);
 };
 
 #endif

@@ -1,7 +1,4 @@
-#include "signup.h"
-#include "../menu_constants.h"
-#include "../db/cache.h"
-#include "../utils/util.h"
+#include "../include/menus/signup.h"
 
 SignupMenu::SignupMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previousMenu, inputBody, sessionId){}
 SignupMenu::SignupMenu() : BaseMenu(){}

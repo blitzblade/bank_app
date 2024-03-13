@@ -1,6 +1,8 @@
 #ifndef USER_H
 #define USER_H
-#include "../db/db.h"
+#include <iostream>
+#include <string>
+#include "../../../db/include/db/db.h"
 
 class User
 {

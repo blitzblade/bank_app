@@ -1,5 +1,5 @@
-#include "base_menu.h"
-#include "../db/cache.h"
+#include "../include/menus/base_menu.h"
+
 
 BaseMenu::BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId){
     this->cache = cache;

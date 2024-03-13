@@ -1,4 +1,4 @@
-#include "main_menu.h"
+#include "../include/menus/main_menu.h"
 
 MainMenu::MainMenu(Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previousMenu, inputBody, sessionId){}
 MainMenu::MainMenu(Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu) : BaseMenu(cache, previousMenu, inputBody, sessionId, menu){}
@@ -8,6 +8,7 @@ bool MainMenu::run(){
     std::cout << this->menu << std::endl;
     std::string sessionId = util::generateRandomString(8);
     std::string response;
+    this->signup = SignupMenu(cache, "","",sessionId);
 
     std::cin >> response;
 
@@ -17,7 +18,7 @@ bool MainMenu::run(){
     }else if(response == "2"){
         /*call signup class*/
         
-        this->signup = SignupMenu(cache, "","",sessionId);
+        
 
         std::vector<std::string> steps = { this->signup.ENTER_NAME, this->signup.ENTER_USERNAME, this->signup.ENTER_PASSWORD, this->signup.CONFIRM_PASSWORD };
 

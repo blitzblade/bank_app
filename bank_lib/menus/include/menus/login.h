@@ -2,8 +2,7 @@
 #define LOGIN_MENU_H
 
 #include "base_menu.h"
-#include "../menu_constants.h"
-#include "../db/cache.h"
+#include "../../../db/include/db/cache.h"
 
 class LoginMenu : BaseMenu {
     public:

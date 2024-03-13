@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include "user.h"
-#include "../db/db.h"
+#include "../include/business/user.h"
 
 int User::get_user_count()
 {

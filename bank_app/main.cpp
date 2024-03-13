@@ -1,9 +1,9 @@
 #include <iostream>
 #include <sqlite3.h>
 #include <fstream>
-#include "db/db.h"
-#include "menus/main_menu.h"
-#include "menu_constants.h"
+#include "db.h"
+#include "../bank_lib/menus/include/menus/main_menu.h"
+#include "../bank_lib/db/include/db/db.h"
 
 void create_schema(Db& db, std::string filename = "db/db.schema"){
     std::ifstream file(filename);
@@ -19,7 +19,7 @@ void create_schema(Db& db, std::string filename = "db/db.schema"){
     } else {
         std::cout << "Unable to open file" << std::endl;
     }
-    char* q = query.data();
+    const char* q = query.c_str();
     db.execute_query(q);
 }
 
@@ -32,10 +32,11 @@ void run(MainMenu& m){
 
 int main(){
     //create schema
-    menu_bodies menus;
+    std::string MAIN_MENU = "\nWelcome to Simple Bank\n1. Login\n2. Sign Up\n3. About\n";
+
     Cache cache = Cache();
     Db db = Db();
-    MainMenu m = MainMenu(cache, "", "", "", menus.MAIN_MENU);
+    MainMenu m = MainMenu(cache, "", "", "", MAIN_MENU);
     create_schema(db);
     run(m);
     return 0;

@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <bcrypt/bcrypt.h>
-#include <random>
-
-#include "util.h"
+#include "../include/utils/util.h"
 
 namespace util {
     
