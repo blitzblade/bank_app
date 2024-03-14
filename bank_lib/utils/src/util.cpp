@@ -2,7 +2,7 @@
 
 namespace util {
     
-    std::string hashString(const std::string& input) {
+    std::string hashPassword(const std::string& input) {
     char salt[BCRYPT_HASHSIZE];
     char hash[BCRYPT_HASHSIZE];
 
@@ -16,6 +16,15 @@ namespace util {
     return std::string(hash);
     }
 
+    bool verifyPassword(const std::string& inputPassword, const std::string& storedHash) {
+        // The bcrypt_checkpw function compares the input password (hashed)
+        // with the stored hash and returns 0 if they match.
+        if (bcrypt_checkpw(inputPassword.c_str(), storedHash.c_str()) == 0) {
+            return true; // The passwords match
+        } else {
+            return false; // The passwords do not match
+        }
+    }
 
     std::string generateRandomString(int length) {
     std::random_device rd;
@@ -31,5 +40,6 @@ namespace util {
     }
 
     return randomString;
-}
+
+    }
 }

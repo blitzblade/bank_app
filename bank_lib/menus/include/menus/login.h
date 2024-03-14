@@ -6,7 +6,7 @@
 
 class LoginMenu : BaseMenu {
     public:
-    LoginMenu(Cache cache, std::string menu, std::string inputBody, std::string sessionId);
+    LoginMenu(Db db, Cache cache, std::string menu, std::string inputBody, std::string sessionId);
     LoginMenu();
     std::string run();
 };

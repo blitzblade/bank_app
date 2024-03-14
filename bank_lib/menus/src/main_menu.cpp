@@ -1,16 +1,16 @@
 #include "../include/menus/main_menu.h"
 
-MainMenu::MainMenu(Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previousMenu, inputBody, sessionId){}
-MainMenu::MainMenu(Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu) : BaseMenu(cache, previousMenu, inputBody, sessionId, menu){}
+MainMenu::MainMenu(Db db, Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(db, cache, previousMenu, inputBody, sessionId){}
+MainMenu::MainMenu(Db db, Cache cache,std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu) : BaseMenu(db, cache, previousMenu, inputBody, sessionId, menu){}
 MainMenu::MainMenu() : BaseMenu(){}
 
 bool MainMenu::run(){
     std::cout << this->menu << std::endl;
     std::string sessionId = util::generateRandomString(8);
     std::string response;
-    this->signup = SignupMenu(cache, "","",sessionId);
+    this->signup = SignupMenu(db, cache, "","",sessionId);
 
-    std::cin >> response;
+    getline(std::cin, response);
 
     if(response == "1"){
         /*call login class*/
@@ -28,6 +28,7 @@ bool MainMenu::run(){
             getline(std::cin, response);
             this->signup.setPreviousMenu(step);
             this->signup.setInputBody(response);
+            this->signup.run();
         }
 
     }else if(response == "3"){

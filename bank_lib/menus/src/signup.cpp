@@ -1,6 +1,6 @@
 #include "../include/menus/signup.h"
 
-SignupMenu::SignupMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previousMenu, inputBody, sessionId){}
+SignupMenu::SignupMenu(Db db, Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(db, cache, previousMenu, inputBody, sessionId){}
 SignupMenu::SignupMenu() : BaseMenu(){}
 
 void SignupMenu::setPreviousMenu(std::string previousMenu){
@@ -35,16 +35,24 @@ bool SignupMenu::run(){
     }else if (this->previousMenu == this->ENTER_PASSWORD){
         //user has entered password. cache it. but hash it first
         user = this->cache.getUser(sessionId);
-        user.password_hash = util::hashString(inputBody);
+        user.password_hash = util::hashPassword(inputBody);
         this->cache.addToCache(sessionId, user);
         return true;
     }else if (this->previousMenu == this->CONFIRM_PASSWORD){
         //user has confirmed password. cache it. save all data to db.
         user = this->cache.getUser(sessionId);
-        if(user.password_hash == util::hashString(inputBody)){
+        std::cout << user.password_hash << " vs " << util::hashPassword(inputBody) << std::endl;
+        if(util::verifyPassword(this->inputBody, user.password_hash)){
+
+            
          this->cache.addToCache(sessionId, user);
+
+         this->db.insert_user(user);
+         std::cout << "Congratulations! Signup successful." << std::endl;
+
         }else{
             //exit maybe?? TODO
+            std::cout << "Password not equal" << std::endl;
             return false;
         }
         
