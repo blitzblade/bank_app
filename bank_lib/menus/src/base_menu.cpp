@@ -1,14 +1,16 @@
 #include "../include/menus/base_menu.h"
 
 
-BaseMenu::BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId){
+BaseMenu::BaseMenu(Db db, Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId){
+    this->db = db;
     this->cache = cache;
     this->previousMenu = previousMenu;
     this->inputBody = inputBody;
     this->sessionId = sessionId;
 }
 
-BaseMenu::BaseMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu){
+BaseMenu::BaseMenu(Db db, Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId, std::string menu){
+    this->db = db;
     this->previousMenu = previousMenu;
     this->cache = cache;
     this->inputBody = inputBody;
@@ -18,7 +20,7 @@ BaseMenu::BaseMenu(Cache cache, std::string previousMenu, std::string inputBody,
 
 BaseMenu::BaseMenu(){
     
-    BaseMenu(Cache(),"","","");
+    BaseMenu(Db(), Cache(),"","","");
 }
 
 bool BaseMenu::run(){

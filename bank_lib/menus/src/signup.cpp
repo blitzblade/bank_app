@@ -1,6 +1,6 @@
 #include "../include/menus/signup.h"
 
-SignupMenu::SignupMenu(Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(cache, previousMenu, inputBody, sessionId){}
+SignupMenu::SignupMenu(Db db, Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId) : BaseMenu(db, cache, previousMenu, inputBody, sessionId){}
 SignupMenu::SignupMenu() : BaseMenu(){}
 
 void SignupMenu::setPreviousMenu(std::string previousMenu){
@@ -43,6 +43,7 @@ bool SignupMenu::run(){
         user = this->cache.getUser(sessionId);
         if(user.password_hash == util::hashString(inputBody)){
          this->cache.addToCache(sessionId, user);
+
         }else{
             //exit maybe?? TODO
             return false;
