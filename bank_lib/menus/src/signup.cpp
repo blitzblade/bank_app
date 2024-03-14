@@ -44,8 +44,12 @@ bool SignupMenu::run(){
         if(user.password_hash == util::hashString(inputBody)){
          this->cache.addToCache(sessionId, user);
 
+         this->db.insert_user(user);
+         std::cout << "Congratulations! Signup successful." << std::endl;
+
         }else{
             //exit maybe?? TODO
+            std::cout << "Password not equal" << std::endl;
             return false;
         }
         

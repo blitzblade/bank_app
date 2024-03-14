@@ -37,3 +37,27 @@ bool Db::execute_query(const char* query){
     sqlite3_close(db);
     return 0;
 }
+
+bool Db::insert_user(User& user){
+    //Users(ID INT PRIMARY KEY NOT NULL, name TEXT NOT NULL, username TEXT, password TEXT);
+    std::string q = "INSERT INTO users(name, username, password) VALUES (?, ?, ?)";
+    open_db();
+    sqlite3_stmt* stmt;
+    int rc = sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, nullptr);
+
+    if (rc != SQLITE_OK) {
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        return -1;
+    }
+    sqlite3_bind_text(stmt, 1, user.name.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, user.username.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, user.password_hash.c_str(), -1, SQLITE_STATIC);
+
+    // Execute the query
+    rc = sqlite3_step(stmt);
+
+    // Clean up
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+}

@@ -36,7 +36,7 @@ int main(){
 
     Cache cache = Cache();
     Db db = Db();
-    MainMenu m = MainMenu(cache, "", "", "", MAIN_MENU);
+    MainMenu m = MainMenu(db, cache, "", "", "", MAIN_MENU);
     create_schema(db);
     run(m);
     return 0;

@@ -5,6 +5,7 @@
 #include <string>   
 #include <vector>
 #include <sqlite3.h>
+#include "cache.h"
 
 class Db
 {
@@ -18,6 +19,7 @@ class Db
         Db(char* db_name);
         bool open_db();
         bool execute_query(const char* query);
+        bool insert_user(User& user);
 };
 
 #endif
