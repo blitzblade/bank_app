@@ -28,6 +28,7 @@ bool MainMenu::run(){
             getline(std::cin, response);
             this->signup.setPreviousMenu(step);
             this->signup.setInputBody(response);
+            this->signup.run();
         }
 
     }else if(response == "3"){

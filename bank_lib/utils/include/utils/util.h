@@ -8,7 +8,8 @@
 
 
 namespace util {
-    std::string hashString(const std::string& input);
+    std::string hashPassword(const std::string& input);
+    bool verifyPassword(const std::string& inputPassword, const std::string& storedHash);
     std::string generateRandomString(int length);
 }
 

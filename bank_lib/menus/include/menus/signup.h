@@ -9,7 +9,7 @@ class SignupMenu : BaseMenu {
     std::string ENTER_NAME = "Enter your name: ";
     std::string ENTER_USERNAME = "Enter username: ";
     std::string ENTER_PASSWORD = "Enter new password: ";
-    std::string CONFIRM_PASSWORD = "Confirm your password";
+    std::string CONFIRM_PASSWORD = "Confirm your password: ";
 
     SignupMenu(Db db, Cache cache, std::string previousMenu, std::string inputBody, std::string sessionId);
     SignupMenu();

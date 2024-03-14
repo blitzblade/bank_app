@@ -17,7 +17,6 @@ bool Db::open_db(){
         std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
         return false;
     } else {
-        std::cout << "Opened database successfully" << std::endl;
         return true;
     }
 }
@@ -48,7 +47,7 @@ bool Db::insert_user(User& user){
     if (rc != SQLITE_OK) {
         sqlite3_finalize(stmt);
         sqlite3_close(db);
-        return -1;
+        return false;
     }
     sqlite3_bind_text(stmt, 1, user.name.c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, user.username.c_str(), -1, SQLITE_STATIC);
@@ -60,4 +59,5 @@ bool Db::insert_user(User& user){
     // Clean up
     sqlite3_finalize(stmt);
     sqlite3_close(db);
+    return true;
 }
