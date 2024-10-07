@@ -4,5 +4,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 project(bank_app)
 
+
+
+
 add_subdirectory(bank_lib)
 add_subdirectory(bank_app)
